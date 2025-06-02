@@ -47,7 +47,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/colin-website/"
+              "baseHref": "/"
             },
             "development": {
               "optimization": false,
