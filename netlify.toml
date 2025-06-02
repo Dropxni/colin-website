@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/colin-website'
+  publish = "dist/colin-website"
   command = "ng build"
 
 [[redirects]]
