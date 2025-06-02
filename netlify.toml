@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/colin-website"
+  publish = "dist/mfa/browser"
   command = "ng build"
 
 [[redirects]]
