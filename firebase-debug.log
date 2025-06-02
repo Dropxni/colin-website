@@ -1,0 +1,29 @@
+[debug] [2025-06-02T10:00:48.491Z] ----------------------------------------------------------------------
+[debug] [2025-06-02T10:00:48.493Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dropx\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2025-06-02T10:00:48.494Z] CLI Version:   14.5.1
+[debug] [2025-06-02T10:00:48.494Z] Platform:      win32
+[debug] [2025-06-02T10:00:48.494Z] Node Version:  v22.9.0
+[debug] [2025-06-02T10:00:48.494Z] Time:          Mon Jun 02 2025 04:00:48 GMT-0600 (Central Standard Time)
+[debug] [2025-06-02T10:00:48.494Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-02T10:00:48.502Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-02T10:00:48.502Z] > authorizing via signed-in user (utti222030@utvco.edu.mx)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\dropx\Documents\dev\colin-website
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
