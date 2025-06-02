@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '../../services/products.service';
+import { ProgramsService, Program } from '../../services/products.service';
+import { isPlatformBrowser } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -9,21 +11,36 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
 
-  products:any = []
-  private prodService = inject(ProductsService)
-  private route = inject(Router)
-  name: string = '...';
+  programs: Program[] = [];
+  private programService = inject(ProgramsService);
+  private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
-  goDetail (id : number) {
-    this.route.navigateByUrl(`/product/`+ id)
+  name: string = 'Nuestros Programas';
+
+  constructor() {
+    this.programs = this.programService.obtenerProgramas();
   }
 
-  constructor(){
-    this.products = this.prodService.obtenerProductos();
+  goToDetail(id: string) {
+    this.router.navigateByUrl(`/program/${id}`);
   }
 
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const elements = document.querySelectorAll('.fade-in');
 
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
 
+      elements.forEach(el => observer.observe(el));
+    }
+  }
 }

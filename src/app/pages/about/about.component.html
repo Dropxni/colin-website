@@ -1,21 +1,50 @@
-<div class="p-5 mb-4 bg-light rounded-3">
-  <div class="container-fluid py-5">
-      <h1 class="display-5 fw-bold">{{user.name}}</h1>
-      <p class="col-md-8 fs-4">
-          {{user.description}}
+<section class="about-wrapper">
+  <div class="container about-container">
+    <div class="about-left fade-in">
+      <img src="https://navy-mongoose-e1e.notion.site/image/attachment%3A601815a3-a8e7-41e5-b944-31c1f03b434f%3Acolin.jpg?table=block&id=206cbaeb-8c67-80e2-a68b-d531f66e1e2e&spaceId=e498179e-50de-47de-9d40-3125d942b246&width=1420&userId=&cache=v2" alt="Equipo COLIN" />
+    </div>
+
+    <div class="about-right fade-in">
+      <h2 class="section-title">Sobre <span class="highlight">COLIN</span></h2>
+      <p class="about-text">
+        En el Centro de Formación Continua <strong>COLIN</strong> brindamos programas educativos de excelencia
+        que fortalecen las competencias profesionales de educadores y profesionales del sector educativo.
       </p>
-      <button (click)="ocultarInfo()" class="btn btn-primary btn-lg" type="button">
-          {{ver ? 'Ver menos' : 'Ver mas'}}
-      </button>
+      <p class="about-text">
+        Nuestro compromiso es una formación integral con impacto real en la calidad educativa de nuestro país.
+      </p>
+
+      <ul class="about-features">
+        <li><i class="fas fa-check-circle"></i> Avalado por instituciones oficiales</li>
+        <li><i class="fas fa-check-circle"></i> Docentes con experiencia comprobada</li>
+        <li><i class="fas fa-check-circle"></i> Modalidades presencial, virtual y bimodal</li>
+        <li><i class="fas fa-check-circle"></i> Constancias con valor curricular</li>
+        <li><i class="fas fa-check-circle"></i> Enfoque práctico y aplicable</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<!-- Some borders are removed -->
-
-@if(ver){
-  <ul class="list-group list-group-flush">
-      @for (videojuego of videojuegos; track $index) {
-          <li class="list-group-item">{{videojuego}}</li>
-      }
-  </ul>
-}
+  <div class="container mission-section fade-in">
+    <div class="mission-box">
+      <h3>Misión</h3>
+      <p>
+        Brindar programas de formación continua de alta calidad que fortalezcan las competencias personales y profesionales de nuestros participantes,
+        fomentando el aprendizaje a lo largo de la vida, la innovación educativa y el compromiso social.
+      </p>
+    </div>
+    <div class="mission-box">
+      <h3>Visión</h3>
+      <p>
+        Ser un centro de referencia en formación continua reconocido por su excelencia académica, impacto social y capacidad para transformar positivamente
+        las trayectorias profesionales de quienes confían en nosotros.
+      </p>
+    </div>
+    <div class="mission-box">
+      <h3>Objetivo General</h3>
+      <p>
+        Desarrollar e implementar propuestas educativas pertinentes que respondan a las necesidades del entorno social y laboral,
+        contribuyendo al crecimiento integral de los individuos.
+      </p>
+    </div>
+  </div>
+</section>

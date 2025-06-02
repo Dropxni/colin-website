@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -7,33 +9,22 @@ import { Component } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ver = false;
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const elements = document.querySelectorAll('.fade-in');
 
-  user = {
-    name: 'José Manuel Ambrosio Agudo',
-    description: 'Soy estudiante del TSU en Tecnologias de la informacion, me gustan los videjuegos y la programacion',
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(el => observer.observe(el));
+    }
   }
-
-  videojuegos: string[] = [
-    'Halo',
-    'Tomb Rider',
-    'Forza Horizon',
-    'DOOM',
-    'Gears of War',
-    'Fornite',
-    'Call of Duty',
-    'Battlefield',
-    'Minecraft',
-    'Hellblade',
-    'A Plague Tale',
-    'Left 4 Dead',
-  ]
-
-  ocultarInfo(){
-    console.log('Ocultar info');
-    this.ver = !this.ver;
-  }
-
 }

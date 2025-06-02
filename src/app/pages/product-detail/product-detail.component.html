@@ -1,1 +1,100 @@
-<p>{{myProduct.name}}</p>
+<div class="container py-5 fade-in" *ngIf="myProgram">
+  <!-- Título -->
+  <div class="mb-4 text-center fade-in">
+    <h2 class="display-5 fw-bold text-primary">{{ myProgram.title }}</h2>
+    <p class="text-muted lead">{{ myProgram.description }}</p>
+  </div>
+
+  <!-- Registro -->
+  <div class="text-center mb-4 fade-in">
+    <div *ngIf="daysRemaining !== null" class="alert alert-info d-inline-block">
+      <i class="bi bi-calendar-event me-2"></i>
+      Faltan <strong>{{ daysRemaining }}</strong> días para el cierre de inscripciones
+    </div>
+
+    <div class="mt-3">
+      <a *ngIf="myProgram.registrationStatus === 'active' && myProgram.registrationLink"
+         [href]="myProgram.registrationLink"
+         target="_blank"
+         class="btn btn-primary btn-lg px-4 rounded-pill fade-in">
+        <i class="bi bi-box-arrow-up-right me-1"></i> Inscribirse ahora
+      </a>
+
+      <span *ngIf="myProgram.registrationStatus === 'coming-soon'" class="badge bg-warning text-dark fs-6 fade-in">
+        🕒 Inscripción próximamente
+      </span>
+
+      <a *ngIf="myProgram.registrationStatus === 'contact-required'" href="/contact" 
+         class="btn btn-outline-secondary btn-lg px-4 rounded-pill fade-in">
+        📞 Contacta para más información
+      </a>
+    </div>
+  </div>
+
+  <!-- Detalles -->
+  <div class="row g-4 mb-4 fade-in">
+    <div class="col-md-6">
+      <div class="p-4 border rounded bg-light h-100">
+        <h5 class="text-secondary mb-3">Detalles del programa</h5>
+        <ul class="list-unstyled small">
+          <li class="mb-2">
+            <i class="bi bi-bookmark-fill text-primary me-2"></i>
+            <strong>Tipo:</strong> {{ myProgram.type }}
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-clock-fill text-success me-2"></i>
+            <strong>Duración:</strong> {{ myProgram.duration }} ({{ myProgram.hours }} horas)
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-laptop text-info me-2"></i>
+            <strong>Modalidad:</strong> {{ myProgram.modality }}
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-currency-dollar text-warning me-2"></i>
+            <strong>Precio:</strong> {{ myProgram.price | currency: myProgram.currency }}
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-geo-alt-fill text-danger me-2"></i>
+            <strong>Ubicación:</strong> {{ myProgram.location }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-4 border rounded bg-light h-100">
+        <h5 class="text-secondary mb-3">Beneficios</h5>
+        <ul class="list-unstyled small">
+          <li *ngFor="let benefit of myProgram.benefits" class="fade-in">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>{{ benefit }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="mb-4 fade-in">
+    <h5 class="text-secondary">Contenido del programa</h5>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let item of myProgram.content" class="list-group-item fade-in">
+        <i class="bi bi-chevron-right text-primary me-2"></i>{{ item }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Instructores -->
+  <div class="fade-in">
+    <h5 class="text-secondary">Instructores</h5>
+    <div *ngFor="let instructor of myProgram.instructors" class="card mb-3 border-0 shadow-sm fade-in">
+      <div class="card-body">
+        <h6 class="card-title text-primary">
+          <i class="bi bi-person-fill me-2"></i>{{ instructor.name }}
+        </h6>
+        <p class="card-text small text-muted mb-1"><strong>Título:</strong> {{ instructor.title }}</p>
+        <p class="card-text small text-muted mb-1"><strong>Especialidad:</strong> {{ instructor.specialization.join(', ') }}</p>
+        <p class="card-text small text-muted"><strong>Experiencia:</strong> {{ instructor.experience }}</p>
+      </div>
+    </div>
+  </div>
+</div>

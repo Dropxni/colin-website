@@ -1,31 +1,49 @@
-<h2 class="mt-3 ms-3">{{name}}</h2>
-<hr>
+<!-- Hero Section -->
+<section class="hero-banner text-white text-center py-5 mb-5 fade-in">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Centro de Formación Continua COLIN</h1>
+    <p class="lead">Transformando la educación a través de programas de formación profesional de alta calidad</p>
+    <a href="#programas" class="btn btn-warning fw-semibold px-4 py-2 mt-3 rounded-pill shadow-sm">
+      Explorar Programas
+    </a>
+  </div>
+</section>
 
+<!-- Lista de Programas -->
+<h2 class="mt-4 ms-3 display-6 fw-bold text-primary text-center fade-in">{{ name }}</h2>
+<hr class="mb-4 border-primary border-2 w-50 mx-auto fade-in">
 
-<div class="container-fluid">
-    <div class="row">
-        @for(product of products; track $index){
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 ">
-                <div class="card m-3 shadow">
-                    <img class="card-img-top" style="max-height: 350px" [src]=product.image alt="Title" />
-                    <div class="card-body">
-                        @if (product.stock < 100) {
-                            <span class="badge bg-danger">Pocas piezas</span>
-                        }
-                        <h4 class="card-title">{{product.name}}</h4>
-                        <p class="card-text">{{product.price | currency}}</p>
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            [disabled]=!product.aviable
-                        >
-                         {{product.aviable ? 'Comprar' : 'Comprar'}}
-                        </button>
-                        <button class="btn btn-success ms-1" (click)="goDetail($index)">Detalles</button>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+<div class="container" id="programas">
+  <div class="row g-4">
+    @for(program of programs; track $index) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="program-card p-3">
+          <div class="mb-2 program-badges">
+            <span class="badge bg-primary rounded-pill">{{ program.modality }}</span>
+            <span class="badge bg-secondary rounded-pill">{{ program.type }}</span>
+            @if(program.featured) {
+              <span class="badge bg-warning text-dark rounded-pill">⭐ Destacado</span>
+            }
+          </div>
+
+          <h5 class="program-title">{{ program.title }}</h5>
+          <p class="program-description">{{ program.description }}</p>
+
+          <div class="mt-2 mb-3 program-meta">
+            <p><i class="bi bi-clock-fill text-primary me-2"></i> <strong>Duración:</strong> {{ program.duration }}</p>
+            <p><i class="bi bi-currency-dollar text-success me-2"></i> <strong>Precio:</strong> {{ program.price | currency: program.currency }}</p>
+            <p><i class="bi bi-people-fill text-info me-2"></i> <strong>Cupo:</strong> {{ program.capacity }}</p>
+          </div>
+
+          @if(program.capacity < 50) {
+            <span class="badge bg-danger mb-2">Cupo limitado</span>
+          }
+
+          <button class="btn btn-outline-primary btn-detail w-100 mt-auto" (click)="goToDetail(program.id)">
+            Ver detalles
+          </button>
+        </div>
+      </div>
+    }
+  </div>
 </div>
-
