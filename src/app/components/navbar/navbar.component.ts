@@ -1,28 +1,28 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
   isScrolled = false;
-  isMenuCollapsed = true;
+  isMenuOpen = false;
 
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onScroll(): void {
     this.isScrolled = window.scrollY > 50;
   }
 
-  toggleMenu() {
-    this.isMenuCollapsed = !this.isMenuCollapsed;
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
-  closeMenu() {
-    this.isMenuCollapsed = true;
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 }

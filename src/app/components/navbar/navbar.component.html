@@ -1,25 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3 shadow-sm">
+<nav class="navbar fixed-top navbar-expand-lg" [class.scrolled]="isScrolled">
   <div class="container-fluid">
-    <!-- Logo eliminado -->
+    <!-- Marca eliminada -->
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-controls="navbarNav" 
+            [attr.aria-expanded]="isMenuOpen" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+    <div class="collapse navbar-collapse justify-content-center" [class.show]="isMenuOpen" id="navbarNav">
       <ul class="navbar-nav gap-3">
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/" routerLinkActive="active" >Inicio</a>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
+             class="nav-link fw-semibold" (click)="closeMenu()">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/about" routerLinkActive="active">Misión y Visión</a>
+          <a routerLink="/about" routerLinkActive="active" class="nav-link fw-semibold" (click)="closeMenu()">Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/contact" routerLinkActive="active">Contacto</a>
+          <a routerLink="/contact" routerLinkActive="active" class="nav-link fw-semibold" (click)="closeMenu()">Contacto</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
