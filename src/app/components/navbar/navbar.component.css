@@ -1,4 +1,4 @@
-/* CONTENEDOR BASE */
+/* NAVBAR BASE */
 .navbar {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   -webkit-backdrop-filter: blur(12px);
@@ -6,32 +6,23 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   padding: 0.8rem 1.5rem;
-  position: sticky;
-  top: 0;
   z-index: 1050;
 }
 
-/* NAVBAR SCROLL */
+/* NAVBAR ON SCROLL */
 .navbar.scrolled {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb); /* mantiene el color */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* CONTENEDOR FLEX */
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 /* LOGO Y MARCA */
 .navbar-brand {
   font-size: 1.4rem;
   font-weight: bold;
+  gap: 0.5rem;
+  color: white !important;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: white;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
 }
@@ -42,114 +33,7 @@
   border-radius: 6px;
 }
 
-/* HAMBURGUER */
-.navbar-toggler {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none;
-}
-
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 25px;
-  height: 2px;
-  background-color: white;
-  position: relative;
-}
-
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 2px;
-  background-color: white;
-  transition: all 0.3s ease;
-}
-
-.navbar-toggler-icon::before {
-  top: -8px;
-}
-
-.navbar-toggler-icon::after {
-  top: 8px;
-}
-
-/* MENU PRINCIPAL */
-.navbar-menu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.navbar-nav {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-nav .nav-link {
-  color: white;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.6rem 1rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: #ffd966;
-  font-weight: 600;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .navbar-toggler {
-    display: block;
-  }
-
-  .navbar-menu {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    margin-top: 0.5rem;
-  }
-
-  .navbar-menu.show {
-    display: flex;
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-.navbar {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  padding: 0.8rem 1.5rem;
-  z-index: 1050;
-}
-
-.navbar.scrolled {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.navbar-toggler {
-  border: none;
-}
-
-.navbar-toggler-icon {
-  filter: invert(100%);
-}
-
+/* ENLACES */
 .navbar-nav .nav-link {
   color: white !important;
   font-weight: 500;
@@ -158,26 +42,30 @@
   transition: all 0.3s ease;
 }
 
+/* HOVER Y ACTIVO */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
   color: #ffd966 !important;
   font-weight: 600;
 }
 
-nav.navbar {
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 1rem;
+/* ICONOS */
+.navbar .nav-icon {
+  color: #ffd966;
+  margin-right: 0.5rem;
+  font-size: 1rem;
 }
 
-nav.navbar.scrolled {
-  background-color: #ffffff !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* HAMBURGUER ICON */
 .navbar-toggler {
   border: none;
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280,0,0,0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+  filter: invert(100%);
+}
+
+/* ESPACIADO ENTRE ITEMS EN MÓVIL */
+.navbar-nav {
+  gap: 0.5rem;
 }
