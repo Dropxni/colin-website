@@ -15,15 +15,13 @@
 
 <div class="container" id="programas">
   <div class="row g-4">
-    @for(program of programs; track $index) {
+    <ng-container *ngFor="let program of programs; index as i">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
-        <div class="program-card p-3">
+        <div class="program-card p-3 d-flex flex-column h-100">
           <div class="mb-2 program-badges">
             <span class="badge bg-primary rounded-pill">{{ program.modality }}</span>
             <span class="badge bg-secondary rounded-pill">{{ program.type }}</span>
-            @if(program.featured) {
-              <span class="badge bg-warning text-dark rounded-pill">⭐ Destacado</span>
-            }
+            <span *ngIf="program.featured" class="badge bg-warning text-dark rounded-pill">⭐ Destacado</span>
           </div>
 
           <h5 class="program-title">{{ program.title }}</h5>
@@ -35,15 +33,13 @@
             <p><i class="bi bi-people-fill text-info me-2"></i> <strong>Cupo:</strong> {{ program.capacity }}</p>
           </div>
 
-          @if(program.capacity < 50) {
-            <span class="badge bg-danger mb-2">Cupo limitado</span>
-          }
+          <span *ngIf="program.capacity < 50" class="badge bg-danger mb-2">Cupo limitado</span>
 
           <button class="btn btn-outline-primary btn-detail w-100 mt-auto" (click)="goToDetail(program.id)">
             Ver detalles
           </button>
         </div>
       </div>
-    }
+    </ng-container>
   </div>
 </div>

@@ -1,20 +1,25 @@
-<nav class="navbar" [class.scrolled]="isScrolled">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/" (click)="closeMenu()">
-      <img src="/assets/logo.png" alt="Logo" class="navbar-logo" />
-      <span>COLIN</span>
-    </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3 shadow-sm">
+  <div class="container-fluid">
+    <!-- Logo eliminado -->
 
-    <button class="navbar-toggler" (click)="toggleMenu()" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-menu" [class.show]="!isMenuCollapsed">
-      <ul class="navbar-nav">
-        <li><a routerLink="/" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Inicio</a></li>
-        <li><a routerLink="/nosotros" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Nosotros</a></li>
-        <li><a routerLink="/contacto" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Contacto</a></li>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" routerLink="/" routerLinkActive="active" >Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" routerLink="/about" routerLinkActive="active">Misión y Visión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" routerLink="/contact" routerLinkActive="active">Contacto</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
